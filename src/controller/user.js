@@ -57,3 +57,36 @@ exports.getAllUsers = asyncHandler(async (req, res, next) => {
     data: users,
   });
 });
+
+exports.updateUser=asyncHandler(async (req,res,next)=>{
+try {
+  const id=req.params.id;
+  const findUser=await Users.findOne({_id:id})
+  if(findUser){
+    const {name,userName,email,address}=req.body;
+    const updatedUser= await Users.findOneAndUpdate({_id:id},{
+      name:name,
+      userName:userName,
+      email:email,
+      address:address
+    },{ upsert: true, new: true });
+  
+    return res.status(200).json({
+      status:200,
+      message:"Account was Updated Successfully",
+      data:updatedUser
+    });
+  }
+  return res.status(400).json({
+    status:400,
+    message:"Invalid Cridential"
+  })
+ 
+  
+} catch (error) {
+  return res.status(500).json({
+    status:500,
+    message:"Server Error "+error.message
+  })
+}
+});

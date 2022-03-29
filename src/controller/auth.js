@@ -71,6 +71,7 @@ const sendTokenResponse = (user, statusCode, res) => {
   const role = user.role;
   const email = user.email;
   const names = user.name;
+  const userId=user._id;
   const options = {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
@@ -88,5 +89,6 @@ const sendTokenResponse = (user, statusCode, res) => {
     role,
     email,
     names,
+    userId,
   });
 };

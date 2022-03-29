@@ -32,7 +32,6 @@ exports.createBisinessIdea = asyncHandler(async (req, res, next) => {
       failedCriteria = failedCriteria + 1;
     }
   }
-  //let differentCreteria=(failedCriteria/totalCriteria)*100
   const ideaStrengthPer=IdeaStrength(totalCriteria,failedCriteria);
   if (failedCriteria === 0 || ideaStrengthPer >=70) {
     status = "approved";
