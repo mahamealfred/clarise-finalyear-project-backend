@@ -58,6 +58,30 @@ exports.getAllUsers = asyncHandler(async (req, res, next) => {
   });
 });
 
+exports.findOneUser=asyncHandler(async (req,res)=>{
+  try {
+    const id=req.params.id;
+    const findedUser=await Users.findById({_id:id})
+    if(findedUser){
+     return res.status(200).json({
+        status:200,
+        message:"Single User",
+        data:findedUser
+      })
+    }
+    return res.status(404).json({
+      status:404,
+      message:"User not found"
+    })   
+  } catch (error) {
+    return res.status(500).json({
+      status:500,
+      message:"Sever error" +error.message
+    })
+  }
+})
+
+
 exports.updateUser=asyncHandler(async (req,res,next)=>{
 try {
   const id=req.params.id;
