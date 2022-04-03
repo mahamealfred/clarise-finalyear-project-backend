@@ -10,13 +10,14 @@ const mailSender = async (options, redirectLink) => {
     },
   });
   const message = {
-    from: '" From BDO" <leasonwetech66@gmail.com', // sender address
+    from: 'mahamealfred@outlook.com', // sender address
     to: options.email, // email receivers
     subject: redirectLink ? process.env.subject1 : process.env.subject2, // Subject line
     text: redirectLink
       ? `hello ${options.name}\n
       please click to this link to confirm you account ${redirectLink}`
-      : `hello ${options.name}\n Your Business Idea have been ${options.status}`,
+      : `To ${options.name}\n Your Business Idea have been ${options.status}
+      Please come to our office for fother process.`,
   };
   const info = await transporter.sendMail(message);
   console.log("Message sent: %s", info.messageId);
