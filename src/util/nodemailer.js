@@ -10,7 +10,7 @@ const mailSender = async (options, redirectLink) => {
     },
   });
   const message = {
-    from: 'mahamealfred@outlook.com', // sender address
+    from: 'clarissekayitesi23@outlook.com', // sender address
     to: options.email, // email receivers
     subject: redirectLink ? process.env.subject1 : process.env.subject2, // Subject line
     text: redirectLink
