@@ -11,6 +11,11 @@ const BisinessIdea = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  capital: {
+    type: Number,
+    required: true,
+    trim: true,
+  },
   bisinessDefinition: {
     type: mongoose.Schema.ObjectId,
     ref: "bisinessDefinition",
@@ -31,6 +36,7 @@ const BisinessIdea = new mongoose.Schema({
     required: true,
     trim: true,
   },
+
   createdAt: {
     type: Date,
     default: Date.now(),

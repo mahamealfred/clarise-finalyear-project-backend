@@ -20,6 +20,7 @@ exports.createBisinessIdea = asyncHandler(async (req, res, next) => {
 
   const bisinessDefinition = conditions._id;
   const userBisinessCriterion = req.body.conditions;
+  const cpt=req.body.capital;
 
   let failedCriteria = 0;
   const totalCriteria = conditions.length;
@@ -33,7 +34,7 @@ exports.createBisinessIdea = asyncHandler(async (req, res, next) => {
     }
   }
   const ideaStrengthPer=IdeaStrength(totalCriteria,failedCriteria);
-  if (failedCriteria === 0 || ideaStrengthPer >=70) {
+  if ((failedCriteria === 0 && cpt>=400) || ( ideaStrengthPer >=50 && cpt >=500)) {
     status = "approved";
   }
   else if(ideaStrengthPer===0){
@@ -45,6 +46,7 @@ exports.createBisinessIdea = asyncHandler(async (req, res, next) => {
   const bisinessIdea = {
     name: req.body.name,
     owner: req.body.owner,
+    capital:req.body.capital,
     bisinessDefinition: bisinessDefinition,
     description: req.body.description,
     conditions: userBisinessCriterion,
