@@ -17,7 +17,7 @@ exports.createBisinessIdea = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("could not find Bisiness Definition", 404));
   }
   const conditions = bisiness.conditions;
-
+const capital=bisiness.capital;
   const bisinessDefinition = conditions._id;
   const userBisinessCriterion = req.body.conditions;
   const cpt=req.body.capital;
@@ -34,7 +34,11 @@ exports.createBisinessIdea = asyncHandler(async (req, res, next) => {
     }
   }
   const ideaStrengthPer=IdeaStrength(totalCriteria,failedCriteria);
-  if ((failedCriteria === 0 && cpt>=400) || ( ideaStrengthPer >=50 && cpt >=500)) {
+  // if ((failedCriteria === 0 && cpt>=400) || ( ideaStrengthPer >=50 && cpt >=500)) {
+  //   status = "approved";
+  // }
+ // if ((failedCriteria === 0 && cpt>=capital) || ( ideaStrengthPer >=70 && cpt >=capital)) {
+  if (  ideaStrengthPer >=70 && cpt >=capital) {
     status = "approved";
   }
   else if(ideaStrengthPer===0){

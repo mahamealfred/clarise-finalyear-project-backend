@@ -7,6 +7,11 @@ const BisinessDefinition = new mongoose.Schema({
     trim: true,
   },
   category: [{}],
+  capital: {
+    type: Number,
+    required: true,
+    trim: true,
+  },
   conditions: [{}],
   createdAt: {
     type: Date,
