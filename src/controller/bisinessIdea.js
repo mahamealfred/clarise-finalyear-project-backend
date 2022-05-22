@@ -38,7 +38,7 @@ const capital=bisiness.capital;
   //   status = "approved";
   // }
  // if ((failedCriteria === 0 && cpt>=capital) || ( ideaStrengthPer >=70 && cpt >=capital)) {
-  if (  ideaStrengthPer >=70 && cpt >=capital) {
+  if (  ideaStrengthPer >=70 && cpt >=capital ) {
     status = "approved";
   }
   else if(ideaStrengthPer===0){
